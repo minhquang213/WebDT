@@ -1,0 +1,22 @@
+﻿@model Category
+<h2> Add catory </h2>
+<hr />
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <labe>Name</labe>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <lable>Display Order</lable>
+        <input asp-for="DisplayOrder" class="form-control" />
+        <span asp-validation-for="DisplayOrder" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a asp-action="Index" class="btn btn-secondary">Back to list</a>
+</form>
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+    <partial name="_Notifications" />
+}

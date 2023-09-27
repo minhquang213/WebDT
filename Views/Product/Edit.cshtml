@@ -1,0 +1,56 @@
+﻿@model Product
+<form asp-action="Edit" method="post" enctype="multipart/form-data">
+    <h2> Edit product </h2>
+    <hr />
+    <input asp-for="ImageUrl" type="hidden" />
+    <input asp-for="Id" type="hidden">
+    <div class="row">
+        <div class="col-md-4">
+             @if(Model.ImageUrl != null)
+            {
+                <img src="/@Model.ImageUrl" style="width:300px">
+            }
+             </div>
+        <div class="col-md-8">
+    <div class="form-group pb-2">
+        <labe>Name</labe>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group pb-2">
+        <labe>Description</labe>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="form-group pb-2">
+        <labe>Price</labe>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+    <div class="form-group pb-2">
+        <labe>Category</labe>
+        <select asp-for="CategoryId" asp-items="@ViewBag.lstCategory" class="form-control">
+            <option disabled selected>==Select Category ==</option>
+        </select>
+        <span asp-validation-for="CategoryId" class="text-danger"></span>
+    </div>
+    <div class="form-group pb-2">
+        <labe>New Image</labe>
+        <input name="file" type="file" class="form-control" />
+    </div>
+            </div>
+        </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+    <a asp-action="Index" class="btn btn-secondary">Back to list</a>
+</form>
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+   <script>
+            tinymce.init({
+                selector: 'textarea',
+                plugins: 'ai tinycomments mentions anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed permanentpen footnotes advtemplate advtable advcode editimage tableofcontents mergetags powerpaste tinymcespellchecker autocorrect a11ychecker typography inlinecss',
+                toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | align lineheight | tinycomments | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+
+            });
+        </script>
+}

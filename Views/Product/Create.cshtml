@@ -1,0 +1,36 @@
+﻿@model Product
+<form asp-action="create" method="post" enctype="multipart/form-data">
+    <h2> Add catory </h2>
+    <hr />
+    <div class="form-group pb-2">
+        <labe>Name</labe>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group pb-2">
+        <labe>Description</labe>
+        <input asp-for="Description" class="form-control" />
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="form-group pb-2">
+        <labe>Price</labe>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+    <div class="form-group pb-2">
+        <labe>Category</labe>
+        <select asp-for="CategoryId" asp-items="@ViewBag.lstCategory" class="form-control">
+            <option disabled selected>==Select Category ==</option>
+        </select>
+        <span asp-validation-for="CategoryId" class="text-danger"></span>
+    </div>
+    <div class="form-group pb-2">
+        <labe>Image</labe>
+        <input name="file" type="file" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a asp-action="Index" class="btn btn-secondary">Back to list</a>
+</form>
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,21 @@
+﻿@model Category
+
+<form asp-action="Delete" method="post">
+    <h2 class="text-primary">Are you sure to delete category ?</h2>
+    <hr />
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <label>Name</label>
+        <input asp-for="Name" disabled class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Display Order</label>
+        <input asp-for="DisplayOrder" disabled class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-danger"> Delete </button>
+    <a asp-action="Index" class="btn btn-secondary "> Back to List</a>
+</form>
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+    <partial name="_Notifications" />
+}
